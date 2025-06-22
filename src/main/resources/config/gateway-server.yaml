@@ -1,0 +1,26 @@
+server:
+  port: 8072
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+
+spring:
+  cloud:
+    gateway:
+      discovery.locator:
+        enabled: true
+        lowerCaseServiceId: true
+      routes:
+        - id: service_a
+          uri: ${ROUTES_URI:lb://localhost:8081}
+          predicates:
+            - Path=/service_a/**
+
+management.endpoint.gateway.enabled: true # default value
+management.endpoints.web.exposure.include: gateway, refresh, health

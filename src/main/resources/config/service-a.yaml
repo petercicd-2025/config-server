@@ -1,0 +1,14 @@
+server:
+  port: 8081
+
+message:
+  string: service_a
+
+eureka:
+  instance:
+    preferIpAddress: true # будем регистрировать не по dns-имени, а по IP - адресу, для докера так удобнее
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8070/eureka/}

@@ -1,0 +1,9 @@
+spring:
+
+  cloud:
+    config:
+      server:
+        vault:
+          port: 8811
+          host: 192.168.0.185
+          kvVersion: 2
